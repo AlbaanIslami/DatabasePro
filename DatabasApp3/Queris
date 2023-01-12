@@ -1,0 +1,54 @@
+CREATE TABLE customers (
+    username varchar (70) NOT NULL PRIMARY KEY,
+    firstname varchar (70) NOT NULL,
+    lastname varchar(70) NOT NULL,
+    country varchar(70) NOT NULL,
+    city varchar (70) NOT NULL,
+    adress varchar(70) NOT NULL,
+    pass varchar(70) NOT NULL,
+    email varchar(70) NOT NULL,
+    phonenr varchar(70) NOT NULL);
+
+CREATE TABLE discount(
+     code varchar(70) NOT NULL PRIMARY KEY,
+     percentage int NOT NULL,
+     description varchar(70) NOT NULL,
+     products varchar(70) NOT NULL,
+     startDate Date NOT NULL,
+     endDate Date NOT NULL
+     );
+
+CREATE TABLE discount_history(
+    message varchar(1000) NOT NULL PRIMARY KEY
+    );
+
+
+    CREATE TABLE orders(
+    confirmation varchar(10) NOT NULL,
+    orderContent varchar(1000) NOT NULL,
+    orderId varchar (50) NOT NULL PRIMARY KEY,
+    username varchar(70) NOT NULL,
+    FOREIGN KEY (username) REFERENCES customers (username)
+);
+
+
+CREATE TABLE products(
+    pName varchar(70) NOT NULL,
+    pCode int NOT NULL PRIMARY KEY,
+    stockTotal int NOT NULL,
+    basePrice int NULL,
+    supplier varchar(70) NULL,
+    ordertimes int NOT NULL,
+    FOREIGN KEY (supplier) REFERENCES suppliers (name)
+);
+
+
+CREATE TABLE suppliers(
+    name varchar(70) NOT NULL PRIMARY KEY,
+    tel varchar(70) NULL,
+    address varchar(70) NOT NULL
+);
+
+CREATE TABLE settings(
+Date varchar(70) NOT NULL PRIMARY KEY
+);
